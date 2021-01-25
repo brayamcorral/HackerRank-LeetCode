@@ -11,51 +11,43 @@ public class Solution {
     
     public static class MyQueue<E>{
     
+        // s1 is used to take in elements
         Stack<E> s1 = new Stack();
+        // s1 is moved to s2("queue")
         Stack<E> s2 = new Stack();
         
         private void moveS1toS2(){
             while(!s1.empty()){
-                E temp = s1.pop();
-                s2.push(temp);
+                s2.push(s1.pop());
             }
         }
         
-        private void moveS2toS1(){
-            while(!s2.empty()){
-                E temp = s2.pop();
-                s1.push(temp);
-            }
-        }
-        
+        // enqueue -- adds elements to end of the queue, is not actually at the end
+        // until s1 is moved to s2        
         public void enqueue(E val){
             s1.push(val);
         }
         
+        // dequeue -- returns and removes element at the front of the queue
+        // if s2 is empty, s1 will fill s2
         public E dequeue(){
-            if(!s1.empty() && s2.empty()){
+            if(s2.empty()){
                 moveS1toS2();
-                E front = s2.pop();
-                moveS2toS1();
-                return front; 
             }
-            
-            throw new IllegalArgumentException("Queue empty");
+            E front = s2.pop();
+            return front; 
         }
         
+        // peek -- returns element at the front of the queue
+        // if s2 is empty, s1 will fill s2
         public E peek(){
-            if(!s1.empty()){
+            if(s2.empty()){
                 moveS1toS2();
-                E front = s2.peek();
-                moveS2toS1();
-                return front; 
             }
-            
-            throw new IllegalArgumentException("Queue empty");
+            E front = s2.peek();
+            return front; 
         }
-  
     }
-
 
     public static void main(String[] args) {
         MyQueue<Integer> queue = new MyQueue<Integer>();
@@ -76,5 +68,3 @@ public class Solution {
         scan.close();
     }
 }
-
-
