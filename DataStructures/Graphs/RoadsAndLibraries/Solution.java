@@ -1,5 +1,4 @@
-// Problem: https://www.hackerrank.com/challenges/torque-and-development/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=graphs
-// Solution: https://www.youtube.com/watch?v=NBEYvk945Bw&list=PLtZbr3iZ6wXIeG2iA0qOBxVyx8iv8fMER&index=2
+// https://www.hackerrank.com/challenges/torque-and-development/problem
 
 import java.io.*;
 import java.math.*;
@@ -11,7 +10,7 @@ import java.util.regex.*;
 
 public class Solution {
 
-    public static int DFS(boolean[] visited, int source,  LinkedList<LinkedList<Integer>> adjacencyList){
+    public static int DFS(boolean[] visited, int source,  List<List<Integer>> adjacencyList){
         
         visited[source] = true;
         int answer = 1;
@@ -26,13 +25,13 @@ public class Solution {
         return answer;
     }
     
-    
     // Complete the roadsAndLibraries function below.
     static long roadsAndLibraries(int n, int c_lib, int c_road, int[][] cities) {
         
-        LinkedList<LinkedList<Integer>> adjacencyList = new LinkedList<LinkedList<Integer>>();
+        List<List<Integer>> adjacencyList;
+        adjacencyList = new ArrayList<>();
         for(int i = 0; i < n+1; ++i){
-            adjacencyList.add(new LinkedList<Integer>());
+            adjacencyList.add(new ArrayList<>());
         }
         
         for(int i = 0; i < cities.length; i++){
