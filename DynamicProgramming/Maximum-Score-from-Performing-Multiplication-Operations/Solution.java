@@ -1,3 +1,5 @@
+// https://leetcode.com/contest/weekly-contest-229/problems/maximum-score-from-performing-multiplication-operations/
+
 class Solution {
     public int maximumScore(int[] nums, int[] multipliers) {
         
